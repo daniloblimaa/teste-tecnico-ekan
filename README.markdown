@@ -41,7 +41,7 @@ Endpoints disponíveis
 1) Pacientes
 - Prefixo do controller: `/api/pacientes`
 
-- POST /v1/pacientes/create
+- POST /api/pacientes/create
   - Descrição: Cria um novo paciente.
   - Corpo (JSON) — PacienteDTO:
     - nome: string (obrigatório)
@@ -49,27 +49,27 @@ Endpoints disponíveis
     - dataNascimento: string (YYYY-MM-DD)
   - Resposta: 201 Created com o objeto criado (Location apontando para o recurso criado)
 
-- GET /v1/pacientes/findall
+- GET /api/pacientes/findall
   - Descrição: Lista todos os pacientes.
   - Resposta: 200 OK — lista de PacienteDTO
 
-- GET /v1/pacientes/find/{id}
+- GET /api/pacientes/find/{id}
   - Descrição: Busca paciente por ID.
   - Resposta: 200 OK — PacienteDTO
 
-- PUT /v1/pacientes/update/{id}
+- PUT /api/pacientes/update/{id}
   - Descrição: Atualiza um paciente (parcial/total conforme DTO enviado).
   - Corpo: PacienteDTO (mesmos campos do create)
   - Resposta: 200 OK — PacienteDTO atualizado
 
-- DELETE /v1/pacientes/delete/{id}
+- DELETE /api/pacientes/delete/{id}
   - Descrição: Deleta paciente por ID.
   - Resposta: 204 No Content
 
 2) Atendimentos (consultas)
 - Prefixo do controller: `/api/atendimentos`
 
-- POST /atendimentos/create
+- POST /api/atendimentos/create
   - Descrição: Cria um novo atendimento vinculado a um paciente e, opcionalmente, a condições (diagnósticos).
   - Corpo (JSON) — AtendimentoDTO:
     - dataAtendimento: string (OffsetDateTime, opcional; se omitido usa OffsetDateTime.now())
@@ -82,25 +82,25 @@ Endpoints disponíveis
         - cidNome: string (apenas para respostas)
   - Resposta: 201 Created — AtendimentoDTO com as condições vinculadas
 
-- GET /atendimentos/findall
+- GET /api/atendimentos/findall
   - Descrição: Lista todos os atendimentos.
   - Resposta: 200 OK — lista de AtendimentoDTO
 
-- GET /atendimentos/find/{id}
+- GET /api/atendimentos/find/{id}
   - Descrição: Busca um atendimento por ID.
   - Resposta: 200 OK — AtendimentoDTO
 
-- PUT /atendimentos/update/{id}
+- PUT /api/atendimentos/update/{id}
   - Descrição: Atualiza dados do atendimento e suas condições. Quando `condicoes` é enviado, as condições anteriores são deletadas e substituídas pelas novas.
   - Corpo: AtendimentoDTO
   - Resposta: 200 OK — AtendimentoDTO atualizado
 
-- GET /atendimentos/paciente/{pacienteId}/condicoes
+- GET /api/atendimentos/paciente/{pacienteId}/condicoes
   - Descrição: Lista todas as condições (condicao -> cid) associadas aos atendimentos de um paciente.
   - Resposta: 200 OK — lista de CondicaoDTO
 
 Observações sobre paths e retornos
-- Os controllers montam URIs de Location nos responses de criação; por exemplo o controller de pacientes faz ResponseEntity.created(URI.create("/pacientes/" + id)) — observe que o Location construído não contém o prefixo `/v1` (isso reflete o código atual).
+- Os controllers montam URIs de Location nos responses de criação; por exemplo o controller de pacientes faz ResponseEntity.created(URI.create("/pacientes/" + id)) — observe que o Location construído não contém o prefixo `/api` (isso reflete o código atual).
 
 Banco de dados e dados iniciais
 - O projeto inclui `src/main/resources/data.sql` com inserções dos códigos CID do capítulo X (J09-J18). Exemplo dos códigos inseridos:
@@ -126,7 +126,7 @@ Exemplos rápidos (curl)
 - Criar paciente:
 
 ```bash
-curl -X POST http://localhost:8080/v1/pacientes/create \
+curl -X POST http://localhost:8080/api/pacientes/create \
  -H "Content-Type: application/json" \
  -d '{"nome":"João Silva","email":"joao@example.com","dataNascimento":"1990-01-01"}'
 ```
@@ -134,7 +134,7 @@ curl -X POST http://localhost:8080/v1/pacientes/create \
 - Criar atendimento (exemplo com condição):
 
 ```bash
-curl -X POST http://localhost:8080/atendimentos/create \
+curl -X POST http://localhost:8080/api/atendimentos/create \
  -H "Content-Type: application/json" \
  -d '{"pacienteId":1, "condicoes":[{"anotacao":"Tosse e febre","cidId":"J10"}] }'
 ```
