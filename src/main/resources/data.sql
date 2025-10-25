@@ -1,0 +1,10 @@
+INSERT INTO cid (id, nome) VALUES ('J09','Influenza due to identified zoonotic or pandemic influenza virus');
+INSERT INTO cid (id, nome) VALUES ('J10','Influenza due to identified seasonal influenza virus');
+INSERT INTO cid (id, nome) VALUES ('J11','Influenza, virus not identified');
+INSERT INTO cid (id, nome) VALUES ('J12','Viral pneumonia, not elsewhere classified');
+INSERT INTO cid (id, nome) VALUES ('J13','Pneumonia due to Streptococcus pneumoniae');
+INSERT INTO cid (id, nome) VALUES ('J14','Pneumonia due to Haemophilus influenzae');
+INSERT INTO cid (id, nome) VALUES ('J15','Bacterial pneumonia, not elsewhere classified');
+INSERT INTO cid (id, nome) VALUES ('J16','Pneumonia due to other infectious organisms, not elsewhere classified');
+INSERT INTO cid (id, nome) VALUES ('J17','Pneumonia in diseases classified elsewhere');
+INSERT INTO cid (id, nome) VALUES ('J18','Pneumonia, unspecified organism');
