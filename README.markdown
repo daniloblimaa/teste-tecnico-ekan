@@ -39,7 +39,7 @@ OpenAPI / Swagger
 Endpoints disponíveis
 
 1) Pacientes
-- Prefixo do controller: `/v1/pacientes`
+- Prefixo do controller: `/api/pacientes`
 
 - POST /v1/pacientes/create
   - Descrição: Cria um novo paciente.
@@ -67,7 +67,7 @@ Endpoints disponíveis
   - Resposta: 204 No Content
 
 2) Atendimentos (consultas)
-- Prefixo do controller: `/atendimentos`
+- Prefixo do controller: `/api/atendimentos`
 
 - POST /atendimentos/create
   - Descrição: Cria um novo atendimento vinculado a um paciente e, opcionalmente, a condições (diagnósticos).
