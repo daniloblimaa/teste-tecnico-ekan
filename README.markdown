@@ -142,8 +142,3 @@ curl -X POST http://localhost:8080/api/atendimentos/create \
 Testes
 - O projeto contém testes unitários de exemplo em `src/test/java` cobrindo repositório, serviço e controller (utilize `mvn test` para executá-los).
 
-Licença
-- Verifique o arquivo LICENSE (se presente) para detalhes de licença do projeto.
-
----
-Arquivo original do README adaptado para refletir o código atual do repositório.
